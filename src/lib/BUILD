@@ -1,6 +1,12 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
 
 cc_library(
+    name = "argsParser",
+    hdrs = ["argsParser.h"],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
     name = "senderWithPipe",
     srcs = ["senderWithPipe.cc"],
     hdrs = ["senderWithPipe.h"],
@@ -15,15 +21,29 @@ cc_library(
 )
 
 cc_library(
-    name = "senderWithMq",
-    srcs = ["senderWithMq.cc"],
-    hdrs = ["senderWithMq.h"],
+    name = "senderWithMsgq",
+    srcs = ["senderWithMsgq.cc"],
+    hdrs = ["senderWithMsgq.h"],
     visibility = ["//visibility:public"],
 )
 
 cc_library(
-    name = "receiverWithMq",
-    srcs = ["receiverWithMq.cc"],
-    hdrs = ["receiverWithMq.h"],
+    name = "receiverWithMsgq",
+    srcs = ["receiverWithMsgq.cc"],
+    hdrs = ["receiverWithMsgq.h"],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "senderWithShmem",
+    srcs = ["senderWithShmem.cc"],
+    hdrs = ["senderWithShmem.h"],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "receiverWithShmem",
+    srcs = ["receiverWithShmem.cc"],
+    hdrs = ["receiverWithShmem.h"],
     visibility = ["//visibility:public"],
 )

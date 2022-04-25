@@ -1,7 +1,20 @@
 #!/usr/bin/bash
 #[ "$(whoami)" != "root" ] && exec sudo -- "$0" "$@"
 
-bazel build //src/main:receiver
-bazel build //src/main:sender
+DIR="sender_and_receiver"
+if [ -d $DIR ] ; then
+    echo "sender_and_receiver directory exists; remove it first"
+    #rm -r $DIR
+    exit 1
+fi
 
-bazel test //tests:senderWithPipe_test
+echo "start building sender and receiver"
+bazel build //src/main:sender
+bazel build //src/main:receiver
+echo "finish building"
+mkdir $DIR
+cp ./bazel-bin/src/main/sender $DIR
+cp ./bazel-bin/src/main/receiver $DIR
+echo "sender and receiver are in sender_and_receiver directory now!"
+
+#bazel test //tests:senderWithPipe_test
