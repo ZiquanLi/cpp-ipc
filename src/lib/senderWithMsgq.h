@@ -1,5 +1,5 @@
-#ifndef LIB_SENDER_WITH_PIPE_H_
-#define LIB_SENDER_WITH_PIPE_H_
+#ifndef LIB_SENDER_WITH_MSGQ_H_
+#define LIB_SENDER_WITH_MSGQ_H_
 #include <iostream>
 #include <string>
 #include <fcntl.h>
@@ -10,20 +10,24 @@
 #include <fstream>
 #include <getopt.h>
 #include <cstdio>
-#include <vector>
 #include <errno.h>
-#include <string.h>
-class SenderWithPipe
+#include <vector>
+#include <cstring>
+#include <mqueue.h>
+
+class SenderWithMsgq
 {
 private:
     //with a trailing underscore means private
-    std::string fifoPath_;
+    std::string mqName_;
+    mqd_t mqd_;
     size_t bufSize_ = 80;
 
 public:
-    SenderWithPipe(const std::string &fifoPath = "/tmp/myfifo");
-    ~SenderWithPipe();
+    SenderWithMsgq(const std::string &mqName = "/mqExample");
+    ~SenderWithMsgq();
     void sendFile(std::string filePath);
+
 };
 
 #endif

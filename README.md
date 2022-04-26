@@ -1,8 +1,8 @@
 # IPC in C++
 
 - [x] Pipe
-- [] Shared memory
-- [] Message queue
+- [x] Shared memory
+- [x] Message queue
 
 The main idea:
 one object called sender executing sending file function;
@@ -19,4 +19,5 @@ bazel clean
 run the specified target:
 bazel run
 
-
+Relevant Bash Script:
+build_and_test.sh will build the sender and receiver and copy the executable files to sender_and_receiver
