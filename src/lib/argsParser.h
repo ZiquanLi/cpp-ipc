@@ -4,7 +4,7 @@
 #include <getopt.h>
 #include <fcntl.h>
 #include <unistd.h>
-enum ipcType
+enum class ipcType
 {
     Pipe,
     Queue,
@@ -33,13 +33,13 @@ public:
                 fileName = optarg;
                 break;
             case 'p':
-                method = Pipe;
+                method = ipcType::Pipe;
                 break;
             case 's':
-                method = SharedMemory;
+                method = ipcType::SharedMemory;
                 break;
             case 'q':
-                method = Queue;
+                method = ipcType::Queue;
                 break;
             case 'h':
                 std::cout << "Usage: my_program [-p] for file transfer by named pipe" << std::endl;
@@ -48,7 +48,7 @@ public:
                 std::cout << "                  [-f file_path] for choosing the target file" << std::endl;
                 std::cout << "                  [-h] for this help command" << std::endl;
                 std::cout << "                  note: Please be careful about the file permissions" << std::endl;
-                method = OtherSituation;
+                method = ipcType::OtherSituation;
                 break;
             default:
                 // fail

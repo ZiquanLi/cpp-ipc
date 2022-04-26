@@ -16,11 +16,12 @@
 class SenderWithPipe
 {
 private:
-    std::string fifoPath;
-    size_t BUF_SIZE = 80;
+    //with a trailing underscore means private
+    std::string fifoPath_;
+    size_t bufSize_ = 80;
 
 public:
-    SenderWithPipe(std::string fifoPath = "/tmp/myfifo");
+    SenderWithPipe(const std::string &fifoPath = "/tmp/myfifo");
     ~SenderWithPipe();
     void sendFile(std::string filePath);
 };

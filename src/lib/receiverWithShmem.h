@@ -19,6 +19,7 @@
 class ReceiverWithShmem
 {
 private:
+    //do not want to change these names into ones with a trailing underscore, I am lazy
     std::string shmPath;
     std::string semProdName;
     std::string semConsName;
@@ -34,7 +35,7 @@ private:
     Shmem_control *shm_ctrl = nullptr;
 
 public:
-    ReceiverWithShmem(std::string shmPath = "/shmExample",std::string semProdName = "semProd",std::string semConsName = "semCons");
+    ReceiverWithShmem(const std::string &shmPath = "/shmExample",const std::string &semProdName = "semProd",const std::string &semConsName = "semCons");
     ~ReceiverWithShmem();
     void receiveFile(std::string filePath);
 };

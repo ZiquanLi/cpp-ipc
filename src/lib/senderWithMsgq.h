@@ -18,12 +18,13 @@
 class SenderWithMsgq
 {
 private:
-    std::string mqName;
-    mqd_t mqd;
-    size_t BUF_SIZE = 80;
+    //with a trailing underscore means private
+    std::string mqName_;
+    mqd_t mqd_;
+    size_t bufSize_ = 80;
 
 public:
-    SenderWithMsgq(std::string mqName = "/mqExample");
+    SenderWithMsgq(const std::string &mqName = "/mqExample");
     ~SenderWithMsgq();
     void sendFile(std::string filePath);
 

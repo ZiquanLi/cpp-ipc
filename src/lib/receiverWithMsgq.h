@@ -19,12 +19,13 @@
 class ReceiverWithMsgq
 {
 private:
-    std::string mqName;
-    mqd_t mqd;
-    size_t BUF_SIZE = 80;
+    //with a trailing underscore means private
+    std::string mqName_;
+    mqd_t mqd_;
+    size_t bufSize_ = 80;
 
 public:
-    ReceiverWithMsgq(std::string mqName = "/mqExample");
+    ReceiverWithMsgq(const std::string &mqName = "/mqExample");
     ~ReceiverWithMsgq();
     void receiveFile(std::string filePath);
 };

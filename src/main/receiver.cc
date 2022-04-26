@@ -5,38 +5,42 @@
 
 int main(int argc, char **argv)
 {
-    ArgsParser argsParser(argc,argv);
-    std::string fileName = argsParser.getFileName();
-    ipcType method = argsParser.getMethod();
-    std::cout << "File Used To Receive:" << fileName << std::endl;
-    switch (method)
-    {
-    case Pipe:
-    {
-        std::cout << "Pipe Is Used:" << std::endl;
-        ReceiverWithPipe receiver;
-        receiver.receiveFile(fileName);
-        break;
+    try{
+        ArgsParser argsParser(argc,argv);
+        std::string fileName = argsParser.getFileName();
+        ipcType method = argsParser.getMethod();
+        std::cout << "File Used To Receive:" << fileName << std::endl;
+        switch (method)
+        {
+        case ipcType::Pipe:
+        {
+            std::cout << "Pipe Is Used:" << std::endl;
+            ReceiverWithPipe receiver;
+            receiver.receiveFile(fileName);
+            break;
+        }
+        case ipcType::SharedMemory:
+        {
+            std::cout << "Shared Memory Is Used:" << std::endl;
+            ReceiverWithShmem receiver;
+            receiver.receiveFile(fileName);
+            break;
+        }
+        case ipcType::Queue:
+        {
+            std::cout << "Message Queue Is Used:" << std::endl;
+            ReceiverWithMsgq receiver;
+            receiver.receiveFile(fileName);
+            break;
+        }
+        case ipcType::OtherSituation:
+            return -1;
+        default:
+            return -1;
+        }
     }
-    case SharedMemory:
-    {
-        std::cout << "Shared Memory Is Used:" << std::endl;
-        ReceiverWithShmem receiver;
-        receiver.receiveFile(fileName);
-        break;
+    catch(const std::exception &e){
+        std::rethrow_exception(std::current_exception());
     }
-    case Queue:
-    {
-        std::cout << "Message Queue Is Used:" << std::endl;
-        ReceiverWithMsgq receiver;
-        receiver.receiveFile(fileName);
-        break;
-    }
-    case OtherSituation:
-        return -1;
-    default:
-        return -1;
-    }
-
     return 0;
 }
