@@ -19,7 +19,6 @@
 class ReceiverWithShmem
 {
 private:
-    //do not want to change these names into ones with a trailing underscore, I am lazy
     std::string shmPath;
     std::string semProdName;
     std::string semConsName;

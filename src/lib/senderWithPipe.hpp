@@ -1,5 +1,5 @@
-#ifndef LIB_RECEIVER_WITH_PIPE_H_
-#define LIB_RECEIVER_WITH_PIPE_H_
+#ifndef LIB_SENDER_WITH_PIPE_H_
+#define LIB_SENDER_WITH_PIPE_H_
 #include <iostream>
 #include <string>
 #include <fcntl.h>
@@ -13,17 +13,20 @@
 #include <vector>
 #include <errno.h>
 #include <string.h>
-class ReceiverWithPipe
+#include <gtest/gtest_prod.h>
+class SenderWithPipe
 {
 private:
     //with a trailing underscore means private
     std::string fifoPath_;
     size_t bufSize_ = 80;
 
+    FRIEND_TEST(TestPipeSender, Constructor);
 public:
-    ReceiverWithPipe(const std::string &fifoPath = "/tmp/myfifo");
-    ~ReceiverWithPipe();
-    void receiveFile(std::string filePath);
+    SenderWithPipe(const std::string &fifoPath = "/tmp/myfifo");
+    ~SenderWithPipe();
+    void sendFile(std::string filePath);
+
 };
 
 #endif

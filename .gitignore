@@ -1,3 +1,4 @@
 **/.vscode/
 bazel-*
 sender_and_receiver/
+*.log

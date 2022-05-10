@@ -1,4 +1,4 @@
-#include "senderWithMsgq.h"
+#include "senderWithMsgq.hpp"
 
 SenderWithMsgq::SenderWithMsgq(const std::string &mqName/*mqName="/mqExample"*/)
 :mqName_(mqName)

@@ -1,5 +1,5 @@
-#ifndef LIB_RECEIVER_WITH_SHMEM_H_
-#define LIB_RECEIVER_WITH_SHMEM_H_
+#ifndef LIB_SENDER_WITH_SHMEM_H_
+#define LIB_SENDER_WITH_SHMEM_H_
 #include <iostream>
 #include <string>
 #include <fcntl.h>
@@ -16,14 +16,14 @@
 #include <sys/shm.h>
 #include <vector>
 #include <cstring>
+#include <gtest/gtest_prod.h>
 class SenderWithShmem
 {
 private:
-    //do not want to change these names into ones with a trailing underscore, I am lazy
     std::string shmPath;
     std::string semProdName;
     std::string semConsName;
-    int shmfd ;
+    int shmfd;
     void * memptr = nullptr ;
     sem_t *semHandleProd = nullptr;
     sem_t *semHandleCons = nullptr;
@@ -34,6 +34,7 @@ private:
     };
     Shmem_control *shm_ctrl = nullptr;
 
+    FRIEND_TEST(TestShmemSender, PrivateMemberVariable);
 public:
     SenderWithShmem(const std::string &shmPath = "/shmExample",const std::string &semProdName = "semProd",const std::string &semConsName = "semCons" );
     ~SenderWithShmem();

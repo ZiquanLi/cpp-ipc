@@ -1,4 +1,4 @@
-#include "senderWithShmem.h"
+#include "senderWithShmem.hpp"
 
 SenderWithShmem::SenderWithShmem(const std::string &shmPath,const std::string &semProdName ,const std::string &semConsName )
 :shmPath(shmPath),semProdName(semProdName),semConsName(semConsName)

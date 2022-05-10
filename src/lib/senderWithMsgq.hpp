@@ -14,7 +14,7 @@
 #include <vector>
 #include <cstring>
 #include <mqueue.h>
-
+#include <gtest/gtest_prod.h>
 class SenderWithMsgq
 {
 private:
@@ -23,6 +23,7 @@ private:
     mqd_t mqd_;
     size_t bufSize_ = 80;
 
+    FRIEND_TEST(TestMsgqSender, CheckMqd);
 public:
     SenderWithMsgq(const std::string &mqName = "/mqExample");
     ~SenderWithMsgq();

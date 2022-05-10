@@ -3,7 +3,7 @@ load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
 
 cc_binary(
     name = "sender",
-    srcs = ["sender.cc"],
+    srcs = ["sender.cpp"],
     deps = [
         "//src/lib:senderWithPipe",
         "//src/lib:senderWithMsgq",
@@ -17,7 +17,7 @@ cc_binary(
 
 cc_binary(
     name = "receiver",
-    srcs = ["receiver.cc"],
+    srcs = ["receiver.cpp"],
     deps = [
         "//src/lib:receiverWithPipe",
         "//src/lib:receiverWithMsgq",

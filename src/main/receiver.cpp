@@ -1,16 +1,16 @@
-#include "src/lib/receiverWithPipe.h"
-#include "src/lib/receiverWithMsgq.h"
-#include "src/lib/receiverWithShmem.h"
-#include "src/lib/argsParser.h"
+#include "src/lib/receiverWithPipe.hpp"
+#include "src/lib/receiverWithMsgq.hpp"
+#include "src/lib/receiverWithShmem.hpp"
+#include "src/lib/argsParser.hpp"
 
 int main(int argc, char **argv)
 {
     try{
         ArgsParser argsParser(argc,argv);
         std::string fileName = argsParser.getFileName();
-        ipcType method = argsParser.getMethod();
+        //ipcType method = argsParser.getMethod();
         std::cout << "File Used To Receive:" << fileName << std::endl;
-        switch (method)
+        switch (argsParser.getMethod())
         {
         case ipcType::Pipe:
         {

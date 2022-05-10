@@ -1,4 +1,4 @@
-#include "senderWithPipe.h"
+#include "senderWithPipe.hpp"
 
 SenderWithPipe::SenderWithPipe(const std::string &fifoPath/*fifoPath="/tmp/myfifo"*/)
 :fifoPath_(fifoPath)

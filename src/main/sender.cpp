@@ -1,7 +1,7 @@
-#include "src/lib/senderWithPipe.h"
-#include "src/lib/senderWithMsgq.h"
-#include "src/lib/senderWithShmem.h"
-#include "src/lib/argsParser.h"
+#include "src/lib/senderWithPipe.hpp"
+#include "src/lib/senderWithMsgq.hpp"
+#include "src/lib/senderWithShmem.hpp"
+#include "src/lib/argsParser.hpp"
 #include <iostream>
 #include <string>
 #include <fcntl.h>

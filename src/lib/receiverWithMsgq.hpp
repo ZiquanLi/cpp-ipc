@@ -16,6 +16,7 @@
 #include <errno.h>
 #include <vector>
 #include <cstring>
+#include <gtest/gtest_prod.h>
 class ReceiverWithMsgq
 {
 private:
